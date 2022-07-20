@@ -1,4 +1,4 @@
-# Bootstrap-Node
+# Bootstrap-Node-Project
 
 **The problem:** Any time I wanted to create a new Node.js project, I found myself having to dig through old projects to copy over a bunch of configuration files, like `.prettierrc` and `.eslintrc` and repeatedly installing the same `eslint` plugins from `npm`. It took a bit of time and effort to get my initial project up and running, since I wanted everything to be *just right*. Surely, there must be an easier way.
 
@@ -8,11 +8,12 @@ There is!
 
 ## To use:
 
-1. Clone this project to your local machine: `git clone git@github.com:daveschumaker/bootstrap-node.git`
-2. `> cd ./bootstrap-node`
+1. Clone this project to your local machine: `git clone git@github.com:daveschumaker/bootstrap-node-project.git`
+2. `> cd ./bootstrap-node-project`
 3. `> npm install`
-4. Install as a global command line app: `npm run install:global`
-5. Invoke `bootstrap-node` anywhere on your system to get started.
+4. `> npm run config:setup` to create an empty `config.js` file that can be used to set default name and email address for new projects.
+5. Install as a global command line app: `npm run install:global`
+6. Invoke `bootstrap-node` anywhere on your system to get started.
 
 ![Screenshot of Bootstrap-Node in action](bootstrap-node-screenshot.png)
 
