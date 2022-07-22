@@ -15,11 +15,33 @@ There is!
 5. Install as a global command line app: `npm run install:global`
 6. Invoke `bootstrap-node` anywhere on your system to get started.
 
-![Screenshot of Bootstrap-Node in action](bootstrap-node-screenshot.png)
+## Directory structure
+
+After a new project is bootstrapped, the directory structure looks like this:
+
+```
+my-cool-project/
+├─ node_modules/
+├─ src/
+│  ├─ index.js
+│  ├─ index.test.js
+├─ .eslintrc.json
+├─ .gitignore
+├─ .prettierrc
+├─ package-lock.json
+├─ package.json
+├─ README.md
+```
+
+
+![Screenshot of Bootstrap-Node in action](bootstrap-node-demo.gif)
 
 ## Future TODOs
 
 * Add more configuration options:
 * Choose license type
+* Private or public package
 * Option to use / build with `typescript`
 * Option to choose `npm` or `yarn`.
+* npm `dev` script that uses `nodemon` to watch for changes if installed on system
+* automatically run tests on commit (e.g., setup project with `husky`)

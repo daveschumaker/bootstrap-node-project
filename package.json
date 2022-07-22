@@ -1,6 +1,7 @@
 {
   "name": "bootstrap-node",
-  "version": "1.0.1",
+  "private": true,
+  "version": "1.0.0",
   "description": "Install globally: `npm install -g .`",
   "type": "module",
   "main": "./bin/main.js",
@@ -10,6 +11,7 @@
   "scripts": {
     "config:setup": "node ./bin/checkConfig.js",
     "dev": "rm -rf test-project && npm run install:global && mkdir test-project",
+    "dev:clean": "rm -rf test-project",
     "install:global": "npm run config:setup && npm install -g ."
   },
   "keywords": [],
