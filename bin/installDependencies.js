@@ -17,6 +17,12 @@ const installDependencies = () => {
 
   logger(`Installing ${chalk.yellow('tap')}...`)
   shell.exec('npm install tap --save-dev', { silent: true })
+
+  logger(`Installing ${chalk.yellow('husky')}...`)
+  shell.exec('npx husky-init', { silent: true })
+
+  logger(`Installing ${chalk.yellow('lint-staged')}...`)
+  shell.exec('npm install lint-staged --save-dev', { silent: true })
 }
 
 export default installDependencies

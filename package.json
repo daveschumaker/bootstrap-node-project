@@ -12,11 +12,18 @@
     "config:setup": "node ./bin/checkConfig.js",
     "dev": "rm -rf test-project && npm run install:global && mkdir test-project",
     "dev:clean": "rm -rf test-project",
-    "install:global": "npm run config:setup && npm install -g ."
+    "install:global": "npm run config:setup && npm install -g .",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Dave Schumaker <dave@dave.ly>",
   "license": "MIT",
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
+  },
   "dependencies": {
     "app-root-path": "^3.0.0",
     "chalk": "^5.0.1",
@@ -30,6 +37,8 @@
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1"
   }
 }
