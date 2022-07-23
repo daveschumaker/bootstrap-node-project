@@ -75,8 +75,6 @@ const bootstrapProject = ({ projectName, userName, userEmail } = {}) => {
   shell.exec(`git add .`, { silent: true })
   shell.exec(`git commit -m "Initial project setup"`, { silent: true })
 
-  console.log(``) // Additional line break at the end
-
   logger(`${chalk.green.bold('DONE')} Bootstrapping complete! 🎉`)
   logger(
     `${chalk.green.bold('DONE')} To get started: 👉 ${chalk.green(

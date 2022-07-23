@@ -1,3 +1,4 @@
+import appRoot from 'app-root-path'
 import chalk from 'chalk'
 import shell from 'shelljs'
 import logger from './logger.js'
@@ -20,6 +21,8 @@ const installDependencies = () => {
 
   logger(`Installing ${chalk.yellow('husky')}...`)
   shell.exec('npx husky-init', { silent: true })
+  shell.cp('-fr', `${appRoot}/bin/assets/.husky`, './')
+  shell.exec('npm install', { silent: true })
 
   logger(`Installing ${chalk.yellow('lint-staged')}...`)
   shell.exec('npm install lint-staged --save-dev', { silent: true })

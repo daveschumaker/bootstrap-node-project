@@ -1,4 +1,10 @@
 {
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
   "extends": [
     "plugin:prettier/recommended",
     "prettier"
@@ -9,6 +15,12 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-undef": [
+      "error",
+      {
+        "typeof": true
+      }
+    ],
     "no-unused-vars": [
       "error",
       {

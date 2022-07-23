@@ -29,10 +29,8 @@ const replacements = ({
     process.exit()
   }
 
+  logger(`Updating ${chalk.green('package.json')}...`)
   try {
-    logger(
-      `Generating project name and adding to ${chalk.green('package.json')}...`
-    )
     replace.sync({
       files: './package.json',
       from: '"name": "project-name"',
@@ -47,7 +45,6 @@ const replacements = ({
   }
 
   try {
-    logger(`Adding author to ${chalk.green('package.json')}...`)
     replace.sync({
       files: './package.json',
       from: '"author": ""',

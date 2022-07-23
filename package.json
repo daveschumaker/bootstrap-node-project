@@ -10,8 +10,8 @@
   },
   "scripts": {
     "config:setup": "node ./bin/checkConfig.js",
-    "dev": "rm -rf test-project && npm run install:global && mkdir test-project",
-    "dev:clean": "rm -rf test-project",
+    "dev": "npm run dev:clean && node ./bin/bootstrapDevProject.js",
+    "dev:clean": "rm -rf ./test-project",
     "install:global": "npm run config:setup && npm install -g .",
     "prepare": "husky install"
   },
