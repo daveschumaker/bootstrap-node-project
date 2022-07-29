@@ -32,6 +32,11 @@ const bootstrapProject = ({ projectName, userName, userEmail } = {}) => {
   shell.exec('git init -b main', { silent: true })
   shell.exec(`git config user.name "${userName}"`, { silent: true })
   shell.exec(`git config user.email "${userEmail}"`, { silent: true })
+  shell.exec('git config pull.rebase true', { silent: true })
+  shell.exec('git config rebase.autoStash true', { silent: true })
+  shell.exec('git config rebase.autosquash true', { silent: true })
+  shell.exec('git config fetch.prune true', { silent: true })
+  shell.exec('git config diff.colorMoved zebra', { silent: true })
 
   // Make source directory
   logger(`Creating ${chalk.green('./src')} directory...`)
