@@ -31,6 +31,12 @@ inquirer
       }
     },
     {
+      name: 'useTypescript',
+      message: 'Use Typescript?',
+      type: 'confirm',
+      default: false
+    },
+    {
       name: 'userName',
       message: 'What is your name?',
       default: USER_NAME || null,
@@ -64,10 +70,11 @@ inquirer
     }
   ])
   .then((answers = {}) => {
-    const { projectName, userName, userEmail } = answers
+    const { projectName, useTypescript, userName, userEmail } = answers
 
     bootstrapProject({
       projectName,
+      useTypescript,
       userName,
       userEmail
     })

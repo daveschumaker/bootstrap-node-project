@@ -3,11 +3,16 @@ import chalk from 'chalk'
 import fs from 'fs'
 import shell from 'shelljs'
 
+import generatePackageJson from './assets/generatePackageJson.js'
 import installDependencies from './installDependencies.js'
 import logger from './logger.js'
-import replacements from './replacements.js'
 
-const bootstrapProject = ({ projectName, userName, userEmail } = {}) => {
+const bootstrapProject = ({
+  projectName,
+  userName,
+  userEmail,
+  useTypescript
+} = {}) => {
   console.log(``) // Add an initial linebreak between input prompts and status messages
 
   // Check if directory exists and bail
@@ -56,7 +61,8 @@ const bootstrapProject = ({ projectName, userName, userEmail } = {}) => {
 
   logger(`Creating initial project files...`)
   logger(`Creating ${chalk.green('package.json')}...`)
-  shell.cp(`${appRoot}/bin/assets/package.json`, './package.json')
+  // shell.cp(`${appRoot}/bin/assets/package.json`, './package.json')
+  generatePackageJson({ projectName, userName, userEmail, useTypescript })
 
   logger(`Creating ${chalk.green('./src/index.js')}...`)
   shell.cp(`${appRoot}/bin/assets/index.js`, './src/index.js')
@@ -65,12 +71,7 @@ const bootstrapProject = ({ projectName, userName, userEmail } = {}) => {
   shell.cp(`${appRoot}/bin/assets/index.test.js`, './src/index.test.js')
 
   logger(`Installing dependencies from npm...`)
-  installDependencies()
-  replacements({
-    projectName,
-    userName,
-    userEmail
-  })
+  installDependencies({ useTypescript })
 
   // Create empty README file.
   logger(`Generating empty ${chalk.green('README.md')}...`)
