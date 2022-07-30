@@ -6,8 +6,13 @@
     "node": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:prettier/recommended",
     "prettier"
+  ],
+  "ignorePatterns": [
+    "build/",
+    "dist/"
   ],
   "parserOptions": {
     "allowImportExportEverwhere": true,

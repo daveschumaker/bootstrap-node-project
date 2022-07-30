@@ -6,7 +6,7 @@ There is!
 
 **The solution (for me):** This is a project I created to quickly setup a new dev environment for Node.js projects using configuration settings that I frequently use in my various projects. This script greatly simplifies the process of getting a basic template up and running. This also provided a good reason to experiment with creating command line applications in Node.js.
 
-On my M1 Macbook Air, I can get a new project up and running in **20 seconds**. 🙌
+On my M1 Macbook Air, I can get a new project up and running in **~20 seconds**. 🙌
 
 ![Screenshot of Bootstrap-Node in action](bootstrap-node-demo.gif)
 
@@ -25,7 +25,8 @@ This script installs the following into a new project:
 
 * `eslint` / `prettier` / [various eslint plugins] - handles code formatting and linting in a new project.
 * `husky` - Enable precommit hooks for enforcing linting and code styling
-* `tap` - Uses Node TAP (Test Anything Protocol) for quick and easy testing
+* `tap` - Uses Node TAP (Test Anything Protocol) for quick and easy testing and creates a basic test
+* `typescript` 🙌 (optional) - Can optionally setup projects with Typescript. (Current default is false)
 
 ## Directory structure 🌴
 
@@ -62,6 +63,5 @@ The solution seems to be either to elevate yourself to root and run `sudo rm -rf
 * Add more configuration options:
 * Choose license type
 * Private or public package
-* Option to use / build with `typescript`
 * Option to choose `npm` or `yarn`.
 * npm `dev` script that uses `nodemon` to watch for changes if installed on system

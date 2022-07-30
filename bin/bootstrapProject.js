@@ -3,6 +3,9 @@ import chalk from 'chalk'
 import fs from 'fs'
 import shell from 'shelljs'
 
+import generateEntry from './assets/generateEntry.js'
+import generateEslintJson from './assets/generateEslintJson.js'
+import generateInitialTest from './assets/generateInitialTest.js'
 import generatePackageJson from './assets/generatePackageJson.js'
 import installDependencies from './installDependencies.js'
 import logger from './logger.js'
@@ -57,18 +60,18 @@ const bootstrapProject = ({
   shell.cp(`${appRoot}/bin/assets/.prettierrc`, './.prettierrc')
 
   logger(`Creating ${chalk.green('.eslintrc.json')}...`)
-  shell.cp(`${appRoot}/bin/assets/.eslintrc.json`, './.eslintrc.json')
+  generateEslintJson({ useTypescript })
 
   logger(`Creating initial project files...`)
   logger(`Creating ${chalk.green('package.json')}...`)
-  // shell.cp(`${appRoot}/bin/assets/package.json`, './package.json')
   generatePackageJson({ projectName, userName, userEmail, useTypescript })
 
-  logger(`Creating ${chalk.green('./src/index.js')}...`)
-  shell.cp(`${appRoot}/bin/assets/index.js`, './src/index.js')
+  const extension = useTypescript ? 'ts' : 'js'
+  logger(`Creating ${chalk.green(`./src/index.${extension}`)}...`)
+  generateEntry({ useTypescript })
 
-  logger(`Creating ${chalk.green('./src/index.test.js')}...`)
-  shell.cp(`${appRoot}/bin/assets/index.test.js`, './src/index.test.js')
+  logger(`Creating ${chalk.green(`./src/index.test.${extension}`)}...`)
+  generateInitialTest({ useTypescript })
 
   logger(`Installing dependencies from npm...`)
   installDependencies({ useTypescript })

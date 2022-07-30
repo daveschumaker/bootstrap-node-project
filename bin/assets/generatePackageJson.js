@@ -6,12 +6,12 @@ const generatePackageJson = ({
   userEmail,
   useTypescript
 } = {}) => {
-  const defaultPackage = {
+  const baseConfig = {
     name: projectName,
     version: '1.0.0',
     description: '',
     type: 'module',
-    main: './src/index.js',
+    main: 'src/index.js',
     scripts: {
       dev: 'node ./src/index.js',
       start: 'node ./src/index.js',
@@ -26,13 +26,17 @@ const generatePackageJson = ({
   }
 
   if (useTypescript) {
-    defaultPackage.main = 'bin/index.js'
-    defaultPackage.scripts.build = 'tsc'
-    defaultPackage.scripts.dev = 'ts-node ./src/index.ts'
-    defaultPackage.scripts.start = 'node ./dist/index.js'
+    // https://stackoverflow.com/a/62099904
+    delete baseConfig.type
+
+    baseConfig.main = 'dist/index.js'
+    baseConfig.scripts.build = 'tsc'
+    baseConfig.scripts.dev = 'ts-node ./src/index.ts'
+    baseConfig.scripts.start = 'node ./dist/index.js'
+    baseConfig.scripts.test = 'tap --ts'
   }
 
-  const formatJson = JSON.stringify(defaultPackage, null, 2)
+  const formatJson = JSON.stringify(baseConfig, null, 2)
   fs.writeFileSync('./package.json', formatJson)
 }
 

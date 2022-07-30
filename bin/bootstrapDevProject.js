@@ -9,5 +9,6 @@ import bootstrapProject from './bootstrapProject.js'
 bootstrapProject({
   projectName: 'test-project',
   userName: 'Testy McTesterson',
-  userEmail: 'test@test.com'
+  userEmail: 'test@test.com',
+  useTypescript: false
 })
