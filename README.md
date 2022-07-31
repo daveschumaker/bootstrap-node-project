@@ -1,12 +1,12 @@
 # 🚧 Bootstrap-Node-Project 🚧
 
-**The problem:** Any time I wanted to create a new Node.js project, I found myself having to dig through old projects to copy over a bunch of configuration files, like `.prettierrc` and `.eslintrc` and repeatedly installing the same `eslint` plugins from `npm`. It took a bit of time and effort to get my initial project up and running, since I wanted everything to be *just right*. Surely, there must be an easier way.
+**The problem:** Any time I wanted to create a new Node.js project, I found myself having to dig through old projects to copy over a bunch of configuration files, like `.prettierrc` and `.eslintrc` and repeatedly installing the same `eslint` plugins from `npm`. It took a bit of time and effort to get my initial project up and running, since I wanted everything to be *just right*. Often, by the time I had the project scaffolding setup, I had lost whatever motivation I had to start working on some new side project. Surely, there must be an easier way.
 
 There is!
 
-**The solution (for me):** This is a project I created to quickly setup a new dev environment for Node.js projects using configuration settings that I frequently use in my various projects. This script greatly simplifies the process of getting a basic template up and running. This also provided a good reason to experiment with creating command line applications in Node.js.
+**The solution (for my purposes, at least):** This is a project I created to quickly setup a new dev environment for Node.js projects using configuration settings that I've frequently used in my previous work. This script greatly simplifies the process of getting a basic project template up and running, with optional support for tests, TypeScript and setting up an API using Express. This also provided a good reason to experiment with creating command line applications in Node.js.
 
-On my M1 Macbook Air, I can get a new project up and running in **~20 seconds**. 🙌
+On my M1 Macbook Air, I can get a new project up and running in **~30 seconds**. 🙌
 
 ![Screenshot of Bootstrap-Node in action](bootstrap-node-demo.gif)
 
@@ -26,7 +26,8 @@ This script installs the following into a new project:
 * `eslint` / `prettier` / [various eslint plugins] - handles code formatting and linting in a new project.
 * `husky` - Enable precommit hooks for enforcing linting and code styling
 * `tap` - Uses Node TAP (Test Anything Protocol) for quick and easy testing and creates a basic test
-* `typescript` 🙌 (optional) - Can optionally setup projects with Typescript. (Current default is false)
+* `express` (optional) - Quickly setup API endpoints and routes using Express
+* `typescript` 🙌 (optional) - Can optionally setup projects with TypeScript. (Current default is false)
 
 ## Directory structure 🌴
 
@@ -37,14 +38,15 @@ my-cool-project/
 ├─ .husky/
 ├─ node_modules/
 ├─ src/
-│  ├─ index.js
-│  ├─ index.test.js
+│  ├─ index.js (ts)
+│  ├─ index.test.js (ts)
 ├─ .eslintrc.json
 ├─ .gitignore
 ├─ .prettierrc
 ├─ package-lock.json
 ├─ package.json
 ├─ README.md
+├─ tsconfig.json (optional)
 ```
 
 ## Issues 🚨

@@ -1,9 +1,11 @@
 import appRoot from 'app-root-path'
 import chalk from 'chalk'
 import shell from 'shelljs'
+
+import generateTsconfig from './assets/generateTsconfig.js'
 import logger from './logger.js'
 
-const installDependencies = ({ useTypescript } = {}) => {
+const installDependencies = ({ useExpress, useTypescript } = {}) => {
   if (useTypescript) {
     logger(`Installing ${chalk.yellow('typescript')}...`)
     shell.exec('npm install typescript --save-dev', { silent: true })
@@ -15,7 +17,7 @@ const installDependencies = ({ useTypescript } = {}) => {
     shell.exec('npm install @typescript-eslint/eslint-plugin --save-dev', {
       silent: true
     })
-    shell.cp(`${appRoot}/bin/assets/tsconfig.json`, './tsconfig.json')
+    generateTsconfig()
   }
 
   logger(`Installing ${chalk.yellow('prettier')}...`)
@@ -40,6 +42,15 @@ const installDependencies = ({ useTypescript } = {}) => {
 
   logger(`Installing ${chalk.yellow('lint-staged')}...`)
   shell.exec('npm install lint-staged --save-dev', { silent: true })
+
+  if (useExpress) {
+    logger(`Installing ${chalk.yellow('express')}...`)
+    shell.exec('npm install express', { silent: true })
+
+    if (useTypescript) {
+      shell.exec('npm install @types/express --save-dev', { silent: true })
+    }
+  }
 }
 
 export default installDependencies

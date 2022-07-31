@@ -12,8 +12,9 @@ import logger from './logger.js'
 
 const bootstrapProject = ({
   projectName,
-  userName,
+  useExpress,
   userEmail,
+  userName,
   useTypescript
 } = {}) => {
   console.log(``) // Add an initial linebreak between input prompts and status messages
@@ -25,8 +26,8 @@ const bootstrapProject = ({
       `A directory already exists at: ${chalk.green('./' + projectName)}`,
       { warning: true }
     )
-    logger('⛔️ Bootstrap unsuccesful. Exiting...\n', { warning: true })
-    process.exit()
+    logger('⛔️ Bootstrap unsuccessful. Exiting...\n', { warning: true })
+    throw new Error('Directory already exists')
   }
 
   logger('🚧 Bootstrapping new node.js project. Stand by...')
@@ -68,13 +69,13 @@ const bootstrapProject = ({
 
   const extension = useTypescript ? 'ts' : 'js'
   logger(`Creating ${chalk.green(`./src/index.${extension}`)}...`)
-  generateEntry({ useTypescript })
+  generateEntry({ useExpress, useTypescript })
 
   logger(`Creating ${chalk.green(`./src/index.test.${extension}`)}...`)
   generateInitialTest({ useTypescript })
 
   logger(`Installing dependencies from npm...`)
-  installDependencies({ useTypescript })
+  installDependencies({ useExpress, useTypescript })
 
   // Create empty README file.
   logger(`Generating empty ${chalk.green('README.md')}...`)

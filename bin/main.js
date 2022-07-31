@@ -31,12 +31,6 @@ inquirer
       }
     },
     {
-      name: 'useTypescript',
-      message: 'Use Typescript?',
-      type: 'confirm',
-      default: false
-    },
-    {
       name: 'userName',
       message: 'What is your name?',
       default: USER_NAME || null,
@@ -57,6 +51,7 @@ inquirer
 
         // Via: https://stackoverflow.com/a/46181
         const validEmail = answer.match(
+          // eslint-disable-next-line no-useless-escape
           /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )
 
@@ -67,15 +62,29 @@ inquirer
         }
         return true
       }
+    },
+    {
+      name: 'useTypescript',
+      message: 'Use Typescript?',
+      type: 'confirm',
+      default: false
+    },
+    {
+      name: 'useExpress',
+      message: 'Setup project with Express?',
+      type: 'confirm',
+      default: false
     }
   ])
   .then((answers = {}) => {
-    const { projectName, useTypescript, userName, userEmail } = answers
+    const { projectName, useExpress, useTypescript, userEmail, userName } =
+      answers
 
     bootstrapProject({
       projectName,
-      useTypescript,
+      useExpress,
+      userEmail,
       userName,
-      userEmail
+      useTypescript
     })
   })

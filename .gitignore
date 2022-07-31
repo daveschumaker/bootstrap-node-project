@@ -136,3 +136,4 @@ build
 #Project specific folders
 config.js
 test-project/
+test-project*
