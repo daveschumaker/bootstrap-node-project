@@ -46,6 +46,7 @@ const installDependencies = ({ useExpress, useTypescript } = {}) => {
   if (useExpress) {
     logger(`Installing ${chalk.yellow('express')}...`)
     shell.exec('npm install express', { silent: true })
+    shell.exec('npm install helmet', { silent: true })
 
     if (useTypescript) {
       shell.exec('npm install @types/express --save-dev', { silent: true })
