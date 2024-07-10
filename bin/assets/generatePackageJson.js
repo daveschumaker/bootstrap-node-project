@@ -26,6 +26,18 @@ const generatePackageJson = ({
     }
   }
 
+  if (useTypescript) {
+    // Do not use "type": "module" when using typescript
+    // https://stackoverflow.com/a/62099904
+    delete baseConfig.type
+
+    baseConfig.main = 'dist/index.js'
+    baseConfig.scripts.build = 'tsc'
+    baseConfig.scripts.dev = 'ts-node ./src/index.ts'
+    baseConfig.scripts.start = 'node ./dist/index.js'
+    baseConfig.scripts.test = 'tap --ts'
+  }
+
   if (useReload && useTypescript) {
     baseConfig.scripts.dev = 'nodemon'
     baseConfig.nodemonConfig = {
@@ -42,17 +54,6 @@ const generatePackageJson = ({
       ext: 'js',
       exec: 'node ./src/index.js'
     }
-  }
-
-  if (useTypescript) {
-    // https://stackoverflow.com/a/62099904
-    delete baseConfig.type
-
-    baseConfig.main = 'dist/index.js'
-    baseConfig.scripts.build = 'tsc'
-    baseConfig.scripts.dev = 'ts-node ./src/index.ts'
-    baseConfig.scripts.start = 'node ./dist/index.js'
-    baseConfig.scripts.test = 'tap --ts'
   }
 
   const formatJson = JSON.stringify(baseConfig, null, 2)
