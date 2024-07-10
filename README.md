@@ -1,6 +1,6 @@
 # 🚧 Bootstrap-Node-Project 🚧
 
-**The problem:** Any time I wanted to create a new Node.js project, I found myself having to dig through old projects to copy over a bunch of configuration files, like `.prettierrc` and `.eslintrc` and repeatedly installing the same `eslint` plugins from `npm`. It took a bit of time and effort to get my initial project up and running, since I wanted everything to be *just right*. Often, by the time I had the project scaffolding setup, I had lost whatever motivation I had to start working on some new side project. Surely, there must be an easier way.
+**The problem:** Any time I wanted to create a new Node.js project, I found myself having to dig through old projects to copy over a bunch of configuration files, like `.prettierrc` and `.eslintrc` and repeatedly installing the same `eslint` plugins from `npm`. It took a bit of time and effort to get my initial project up and running, since I wanted everything to be _just right_. Often, by the time I had the project scaffolding setup, I had lost whatever motivation I had to start working on some new side project. Surely, there must be an easier way.
 
 There is!
 
@@ -23,11 +23,12 @@ On my M1 Macbook Air, I can get a new project up and running in **~30 seconds**.
 
 This script installs the following into a new project:
 
-* `eslint` / `prettier` / [various eslint plugins] - handles code formatting and linting in a new project.
-* `husky` - Enable precommit hooks for enforcing linting and code styling
-* `tap` - Uses Node TAP (Test Anything Protocol) for quick and easy testing and creates a basic test
-* `express` (optional) - Quickly setup API endpoints and routes using Express
-* `typescript` 🙌 (optional) - Can optionally setup projects with TypeScript. (Current default is false)
+- `eslint` / `prettier` / [various eslint plugins] - handles code formatting and linting in a new project.
+- `husky` - Enable precommit hooks for enforcing linting and code styling
+- `tap` - Uses Node TAP (Test Anything Protocol) for quick and easy testing and creates a basic test
+- `express` (optional) - Quickly setup API endpoints and routes using Express
+- `typescript` 🙌 (optional) - Can optionally setup projects with TypeScript. (Current default is true)
+- `nodemon` (optional) - Can optionally setup projects with nodemon. (Current default is false)
 
 ## Directory structure 🌴
 
@@ -62,8 +63,7 @@ The solution seems to be either to elevate yourself to root and run `sudo rm -rf
 
 ## Future TODOs ✅
 
-* Add more configuration options:
-* Choose license type
-* Private or public package
-* Option to choose `npm` or `yarn`.
-* npm `dev` script that uses `nodemon` to watch for changes if installed on system
+- Add more configuration options:
+- Choose license type
+- Private or public package
+- Option to choose `npm` or `yarn`.
