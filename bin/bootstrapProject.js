@@ -15,6 +15,7 @@ const bootstrapProject = ({
   useExpress,
   userEmail,
   userName,
+  useReload,
   useTypescript
 } = {}) => {
   console.log(``) // Add an initial linebreak between input prompts and status messages
@@ -65,7 +66,13 @@ const bootstrapProject = ({
 
   logger(`Creating initial project files...`)
   logger(`Creating ${chalk.green('package.json')}...`)
-  generatePackageJson({ projectName, userName, userEmail, useTypescript })
+  generatePackageJson({
+    projectName,
+    userName,
+    userEmail,
+    useReload,
+    useTypescript
+  })
 
   const extension = useTypescript ? 'ts' : 'js'
   logger(`Creating ${chalk.green(`./src/index.${extension}`)}...`)
@@ -75,7 +82,7 @@ const bootstrapProject = ({
   generateInitialTest({ useTypescript })
 
   logger(`Installing dependencies from npm...`)
-  installDependencies({ useExpress, useTypescript })
+  installDependencies({ useExpress, useReload, useTypescript })
 
   // Create empty README file.
   logger(`Generating empty ${chalk.green('README.md')}...`)

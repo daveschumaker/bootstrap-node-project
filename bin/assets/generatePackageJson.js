@@ -2,8 +2,9 @@ import fs from 'fs'
 
 const generatePackageJson = ({
   projectName,
-  userName,
+  useReload,
   userEmail,
+  userName,
   useTypescript
 } = {}) => {
   const baseConfig = {
@@ -22,6 +23,24 @@ const generatePackageJson = ({
     license: 'MIT',
     'lint-staged': {
       '**/*.{js,jsx,ts,tsx}': ['npx prettier --write', 'npx eslint --fix']
+    }
+  }
+
+  if (useReload && useTypescript) {
+    baseConfig.scripts.dev = 'nodemon'
+    baseConfig.nodemonConfig = {
+      watch: ['src'],
+      ext: 'ts',
+      exec: 'ts-node ./src/index.ts'
+    }
+  }
+
+  if (useReload && !useTypescript) {
+    baseConfig.scripts.dev = 'nodemon'
+    baseConfig.nodemonConfig = {
+      watch: ['src'],
+      ext: 'js',
+      exec: 'node ./src/index.js'
     }
   }
 

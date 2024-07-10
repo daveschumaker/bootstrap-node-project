@@ -5,7 +5,7 @@ import shell from 'shelljs'
 import generateTsconfig from './assets/generateTsconfig.js'
 import logger from './logger.js'
 
-const installDependencies = ({ useExpress, useTypescript } = {}) => {
+const installDependencies = ({ useExpress, useReload, useTypescript } = {}) => {
   if (useTypescript) {
     logger(`Installing ${chalk.yellow('typescript')}...`)
     shell.exec('npm install typescript --save-dev', { silent: true })
@@ -51,6 +51,11 @@ const installDependencies = ({ useExpress, useTypescript } = {}) => {
     if (useTypescript) {
       shell.exec('npm install @types/express --save-dev', { silent: true })
     }
+  }
+
+  if (useReload) {
+    logger(`Installing ${chalk.yellow('nodemon')}...`)
+    shell.exec('npm install nodemon', { silent: true })
   }
 }
 

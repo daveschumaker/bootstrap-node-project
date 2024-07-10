@@ -67,24 +67,37 @@ inquirer
       name: 'useTypescript',
       message: 'Use Typescript?',
       type: 'confirm',
-      default: false
+      default: true
     },
     {
       name: 'useExpress',
       message: 'Setup project with Express?',
       type: 'confirm',
       default: false
+    },
+    {
+      name: 'useReload',
+      message: 'Auto restart dev server on changes?',
+      type: 'confirm',
+      default: true
     }
   ])
   .then((answers = {}) => {
-    const { projectName, useExpress, useTypescript, userEmail, userName } =
-      answers
+    const {
+      projectName,
+      useExpress,
+      useReload,
+      userEmail,
+      userName,
+      useTypescript
+    } = answers
 
     bootstrapProject({
       projectName,
       useExpress,
       userEmail,
       userName,
+      useReload,
       useTypescript
     })
   })
