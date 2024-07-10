@@ -11,7 +11,9 @@ import installDependencies from './installDependencies.js'
 import logger from './logger.js'
 
 const bootstrapProject = ({
+  defaultPort,
   projectName,
+  useCors,
   useExpress,
   userEmail,
   userName,
@@ -76,13 +78,13 @@ const bootstrapProject = ({
 
   const extension = useTypescript ? 'ts' : 'js'
   logger(`Creating ${chalk.green(`./src/index.${extension}`)}...`)
-  generateEntry({ useExpress, useTypescript })
+  generateEntry({ defaultPort, useCors, useExpress, useTypescript })
 
   logger(`Creating ${chalk.green(`./src/index.test.${extension}`)}...`)
   generateInitialTest({ useTypescript })
 
   logger(`Installing dependencies from npm...`)
-  installDependencies({ useExpress, useReload, useTypescript })
+  installDependencies({ useCors, useExpress, useReload, useTypescript })
 
   // Create empty README file.
   logger(`Generating empty ${chalk.green('README.md')}...`)

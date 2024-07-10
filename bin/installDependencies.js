@@ -5,7 +5,12 @@ import shell from 'shelljs'
 import generateTsconfig from './assets/generateTsconfig.js'
 import logger from './logger.js'
 
-const installDependencies = ({ useExpress, useReload, useTypescript } = {}) => {
+const installDependencies = ({
+  useCors,
+  useExpress,
+  useReload,
+  useTypescript
+} = {}) => {
   if (useTypescript) {
     logger(`Installing ${chalk.yellow('typescript')}...`)
     shell.exec('npm install typescript --save-dev', { silent: true })
@@ -51,6 +56,11 @@ const installDependencies = ({ useExpress, useReload, useTypescript } = {}) => {
     if (useTypescript) {
       shell.exec('npm install @types/express --save-dev', { silent: true })
     }
+  }
+
+  if (useCors) {
+    logger(`Installing ${chalk.yellow('cors')}...`)
+    shell.exec('npm install cors', { silent: true })
   }
 
   if (useReload) {
