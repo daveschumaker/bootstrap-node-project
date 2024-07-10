@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-node",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Install globally: `npm install -g .`",
   "type": "module",
   "main": "./bin/main.js",
@@ -13,7 +13,9 @@
     "dev": "npm run dev:clean && node ./bin/bootstrapDevProject.js",
     "dev:clean": "rm -rf ./test-project",
     "install:global": "npm run config:setup && npm install -g .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "node ./bin/main.js",
+    "test": "echo \"Warning: no test specified\""
   },
   "keywords": [],
   "author": "Dave Schumaker <dave@dave.ly>",
@@ -26,12 +28,12 @@
   },
   "dependencies": {
     "app-root-path": "3.1.0",
-    "chalk": "5.2.0",
+    "chalk": "5.3.0",
     "cli-box": "6.0.10",
     "inquirer": "9.1.4",
     "replace-in-file": "6.3.5",
     "shelljs": "0.8.5",
-    "validate-npm-package-name": "5.0.0"
+    "validate-npm-package-name": "5.0.1"
   },
   "devDependencies": {
     "eslint": "8.29.0",
@@ -39,6 +41,6 @@
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.2",
     "lint-staged": "13.1.0",
-    "prettier": "2.8.1"
+    "prettier": "3.3.2"
   }
 }
