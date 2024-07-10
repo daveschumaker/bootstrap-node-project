@@ -7,15 +7,14 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "ignorePatterns": [
     "build/",
     "dist/"
   ],
   "parserOptions": {
-    "allowImportExportEverwhere": true,
+    "allowImportExportEverywhere": true,
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
