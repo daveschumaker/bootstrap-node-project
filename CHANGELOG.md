@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.0] - 2024-07-10
+
+### Added
+
+- Option to choose a new default port for Express.
+- Option to enable usage of CORS library for Express.
+- When using Express, create /routes folder with example API route.
+
+### Changed
+
+- Updated inquirer library.
+
+### Fixed
+
+- Add nodemon to `npm run dev` script.
+- Removed "https" protocol from console.log statement on Express app start.
+
 ## [1.2.0] - 2024-07-10
 
 ### Added
